@@ -14,6 +14,8 @@ const DetailPage = () => {
   if (!params.id) {
     notFound();
   }
+
+  // Just for the example, in normal conditions we can use useQuery but I wanted to show that we can get the data in a type-safe way
   const data = queryClient.getQueryData(characterQuery(params.id.toString()).queryKey);
 
   if (!data) return null;

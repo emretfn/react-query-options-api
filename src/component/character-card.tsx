@@ -1,17 +1,18 @@
+import { Character } from "@/types/character";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const CharacterCard = ({ character }: { character: any }) => {
+const CharacterCard = ({ character }: { character: Character }) => {
   return (
-    <span className="bg-gray-100 grid rounded-lg gap-2 overflow-hidden ">
+    <span className="bg-gray-100 grid rounded-lg gap-2 overflow-hidden w-full">
       <div className="flex shrink-0">
         <Image
           src={character.image}
           alt={character.name}
           width={300}
           height={300}
-          className="aspect-square object-cover max-w-full "
+          className="aspect-square object-cover w-full "
         />
       </div>
       <div className="flex flex-col px-4 py-2 gap-y-2">
