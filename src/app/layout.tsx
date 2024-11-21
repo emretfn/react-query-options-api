@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Providers from "./providers";
+import Link from "next/link";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,10 +28,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <header className="bg-gray-300 text-black h-16 flex items-center px-4 gap-x-2">
+          <Link className="font-medium px-2" href="/characters-server">
+            Characters (Server)
+          </Link>
+          <Link className="font-medium px-2" href="/characters-client">
+            Characters (Client)
+          </Link>
+        </header>
+        <Providers>
+          <ReactQueryDevtools />
+          <main className="h-[calc(100vh-4rem)] overflow-y-scroll p-4">{children}</main>
+        </Providers>
       </body>
     </html>
   );
